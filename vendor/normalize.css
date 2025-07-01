@@ -117,9 +117,7 @@ select {
 button,
 [type="button"],
 [type="reset"],
-[type="submit"] {
-  -webkit-appearance: button;
-}
+[type="submit"] 
 
 ::-moz-focus-inner {
   border-style: none;
@@ -159,7 +157,6 @@ textarea {
 }
 
 [type="search"] {
-  -webkit-appearance: textfield;
   outline-offset: -2px;
 }
 
@@ -172,9 +169,6 @@ textarea {
   font: inherit;
 }
 
-/* Interactive
-   ========================================================================== */
-
 details {
   display: block;
 }
@@ -182,6 +176,3 @@ details {
 summary {
   display: list-item;
 }
-
-/* Misc
-   ==================================================================
