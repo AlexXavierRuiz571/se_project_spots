@@ -14,7 +14,7 @@
 
 ## 🎨 Figma Design
 
-[View the Design on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
+[View the Design on Figma](https://www.figma.com/design/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project--Spots?node-id=2-218&t=g0ymdBvPaXHeIC63-0)
 
 ---
 
@@ -26,7 +26,7 @@ All images were exported directly from Figma for accuracy. Optimized using [Tiny
 
 ## 💡 Notes
 
-This project is more complex than the previous ones. It’s a good opportunity to sharpen layout skills and reinforce responsive design principles.
+This project is more complex than earlier ones. It reinforces layout structure, responsive behavior, and image handling techniques. A good step forward in building production-ready interfaces.
 
 ---
 
