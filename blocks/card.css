@@ -14,7 +14,7 @@
   object-fit: cover;
   display: block;
   border-radius: 8px;
-  margin-bottom: 12PX;
+  margin-bottom: 12px;
 }
 
 .card__title {
@@ -22,7 +22,7 @@
   color: #212121;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
-  font-style: Medium;
+  font-style: medium;
   font-size: 20px;
   line-height: 120%;
 }
@@ -43,7 +43,7 @@
 }
 
 @media screen and (max-width: 630px) {
- .card__image {
-  height: 288px;
- }
+  .card__image {
+    height: 288px;
+  }
 }
