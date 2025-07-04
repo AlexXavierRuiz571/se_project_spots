@@ -8,6 +8,7 @@
   margin-right: 20px;
   width: 190px;
   height: 190px;
+  border-radius: 8px;
 }
 
 .profile__column {
@@ -48,6 +49,7 @@
   display: flex;
   gap: 8px;
   opacity: 0.7;
+  background-color: transparent;
   border: none;
   cursor: pointer;
   transition: opacity 0.3s ease-in-out;
