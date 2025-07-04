@@ -29,13 +29,9 @@
 
 ## 🖼️ Screenshots
 
-![Homepage Screenshot](./images/screenshot-home.png)  
-*Example of the homepage layout on desktop.*
+![Homepage Screenshot](./images/Screenshot%202025-07-04%20105802.png)  
 
-![Responsive View Screenshot](./images/screenshot-responsive.png)  
-*Responsive layout shown on mobile screen.*
-
-> Make sure these screenshot images exist in your project repo under an `images` folder.
+![Responsive View Screenshot](./images/Screenshot%202025-07-04%20105840.png)  
 
 ---
 
