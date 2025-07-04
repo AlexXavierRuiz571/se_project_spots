@@ -6,6 +6,15 @@
 
 ---
 
+## 🔧 Technologies Used
+
+- HTML5 with semantic structure
+- CSS3 with Flexbox and Media Queries
+- Responsive design principles
+- Figma for layout prototyping
+
+---
+
 ## 🔗 Live Demo
 
 [View on GitHub Pages](https://alexxavierruiz571.github.io/se_project_spots/)
@@ -18,9 +27,15 @@
 
 ---
 
-## 🖼️ Images
+## 🖼️ Screenshots
 
-All images were exported directly from Figma for accuracy. Optimized using [TinyPNG](https://tinypng.com/) for better performance and faster loading.
+![Homepage Screenshot](./images/screenshot-home.png)  
+*Example of the homepage layout on desktop.*
+
+![Responsive View Screenshot](./images/screenshot-responsive.png)  
+*Responsive layout shown on mobile screen.*
+
+> Make sure these screenshot images exist in your project repo under an `images` folder.
 
 ---
 
