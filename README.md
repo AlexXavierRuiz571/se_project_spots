@@ -29,9 +29,9 @@
 
 ## 🖼️ Screenshots
 
-![Homepage Screenshot](./images/Screenshot%202025-07-04%20105802.png)  
+![Homepage Screenshot](./images/Screenshot%202025-07-04%20105802.png)
 
-![Responsive View Screenshot](./images/Screenshot%202025-07-04%20105840.png)  
+![Responsive View Screenshot](./images/Screenshot%202025-07-04%20105840.png)
 
 ---
 
