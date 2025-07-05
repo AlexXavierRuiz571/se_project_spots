@@ -18,13 +18,16 @@
 }
 
 .card__title {
-  height: 24px;
+  margin: 0;
   color: #212121;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
-  font-style: medium;
   font-size: 20px;
   line-height: 120%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 353px;
 }
 
 .card__like-button {
@@ -45,5 +48,10 @@
 @media screen and (max-width: 630px) {
   .card__image {
     height: 288px;
+  }
+
+  .card__title {
+    max-width: 250px;
+    font-size: 16px;
   }
 }
