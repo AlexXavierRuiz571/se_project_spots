@@ -6,11 +6,17 @@
 
 ---
 
+## 📽️ Project Walkthrough Video
+
+[Watch the Presentation on Google Drive](https://drive.google.com/file/d/1Q5FiMj5MiSts-u2yZ4Yis5umPeFqnsTx/view?usp=sharing)
+
+---
+
 ## 🔧 Technologies Used
 
-- HTML5 with semantic structure
-- CSS3 with Flexbox and Media Queries
-- Responsive design principles
+- HTML5 with semantic structure  
+- CSS3 with Flexbox and Media Queries  
+- Responsive design principles  
 - Figma for layout prototyping
 
 ---
@@ -29,8 +35,7 @@
 
 ## 🖼️ Screenshots
 
-![Homepage Screenshot](./images/Screenshot%202025-07-04%20105802.png)
-
+![Homepage Screenshot](./images/Screenshot%202025-07-04%20105802.png)  
 ![Responsive View Screenshot](./images/Screenshot%202025-07-04%20105840.png)
 
 ---
