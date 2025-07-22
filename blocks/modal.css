@@ -40,8 +40,15 @@
   width: 40px;
   height: 40px;
   background-image: url(../images/close-icon.svg);
+  background-color: transparent;
+  opacity: 0.4;
   cursor: pointer;
   border: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.modal__close-button:hover {
+  opacity: 1;
 }
 
 .modal__title {
@@ -103,12 +110,19 @@
   gap: 8px;
   background: #212121;
   border-radius: 8px;
+  border: none;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-style: medium;
   font-size: 16px;
   line-height: 100%;
   color: #fcf5e5;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.modal__submit-button:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 630px) {
