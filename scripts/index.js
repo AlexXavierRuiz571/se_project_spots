@@ -39,24 +39,29 @@ const initialCards = [
 
 //------------ Card Creation and Display ------------
 
-const cardTemplate = document.querySelector('#card-template').content;
-const cardsContainer = document.querySelector('.cards__list');
+const cardTemplate = document.querySelector("#card-template").content;
+const cardsContainer = document.querySelector(".cards__list");
 
-function getCardElement(data) {
-  const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
-  const cardTitle = cardElement.querySelector('.card__title');
-  const cardImage = cardElement.querySelector('.card__image');
+function getCardElement(cardData) {
+  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
+  const cardTitle = cardElement.querySelector(".card__title");
+  const cardImage = cardElement.querySelector(".card__image");
+  const likeButton = cardElement.querySelector(".card__like-button");
 
-  cardTitle.textContent = data.name;
-  cardImage.src = data.link;
-  cardImage.alt = data.name;
+  cardTitle.textContent = cardData.name;
+  cardImage.src = cardData.link;
+  cardImage.alt = cardData.name;
+
+ likeButton.addEventListener("click", function () {
+    likeButton.classList.toggle("card__like-button_active");
+  });
 
   return cardElement;
 }
 
 initialCards.forEach(function (cardData) {
   const card = getCardElement(cardData);
-  cardsContainer.prepend(card); // Or .append(card)
+  cardsContainer.prepend(card);
 });
 
 //------------ Edit Profile Modal ------------
@@ -117,11 +122,17 @@ newPostCloseButton.addEventListener("click", function () {
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-  console.log("Image URL:", imageLinkInput.value);
-  console.log("Caption:", captionInput.value);
+  const cardData = {
+    name: captionInput.value,
+    link: imageLinkInput.value,
+  };
+  const card = getCardElement(cardData);
+  cardsContainer.prepend(card);
+
   closeModal(newPostModal);
   evt.target.reset();
 }
+
 
 newPostForm.addEventListener("submit", handleAddCardSubmit);
 
