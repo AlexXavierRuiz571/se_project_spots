@@ -22,6 +22,24 @@
       <header class="header">
         <img src="./images/Logo.svg" alt="Spots Logo" class="header__logo" />
       </header>
+      <div
+        class="modal modal_type_image modal_is-opened"
+        id="image-preview-modal"
+      >
+        <div class="modal__container">
+          <button
+            class="modal__close-button"
+            type="button"
+            aria-label="Close"
+          ></button>
+          <img
+            src="./images/7-photo-by-griffin-wooldridge-from-pexels.jpg"
+            alt="Long bridge"
+            class="modal__image"
+          />
+          <p class="modal__caption">LONG long bridge</p>
+        </div>
+      </div>
       <main class="content">
         <section class="profile page__section">
           <img
@@ -52,7 +70,11 @@
               <img src="#" alt="" class="card__image" />
               <div class="card__content">
                 <h2 class="card__title"></h2>
-                <button type="button" class="card__like-button" aria-label="Like"></button>
+                <button
+                  type="button"
+                  class="card__like-button"
+                  aria-label="Like"
+                ></button>
               </div>
             </li>
           </template>

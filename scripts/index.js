@@ -47,6 +47,7 @@ function getCardElement(cardData) {
   const cardTitle = cardElement.querySelector(".card__title");
   const cardImage = cardElement.querySelector(".card__image");
   const likeButton = cardElement.querySelector(".card__like-button");
+  const deleteButton = cardElement.querySelector(".card__delete-button");
 
   cardTitle.textContent = cardData.name;
   cardImage.src = cardData.link;
@@ -54,6 +55,17 @@ function getCardElement(cardData) {
 
  likeButton.addEventListener("click", function () {
     likeButton.classList.toggle("card__like-button_active");
+  });
+
+deleteButton.addEventListener("click", function () {
+    cardElement.remove();
+  });
+
+  cardImage.addEventListener("click", function () {
+    imagePreviewCaption.textContent = cardData.name;
+    imagePreviewImage.src = cardData.link;
+    imagePreviewImage.alt = cardData.name;
+    openModal(imagePreviewModal);
   });
 
   return cardElement;
@@ -133,11 +145,16 @@ function handleAddCardSubmit(evt) {
   evt.target.reset();
 }
 
-
 newPostForm.addEventListener("submit", handleAddCardSubmit);
 
-//------------ Testing: Log Initial Cards to Console ------------
+//------------ Image Preview Modal ------------
 
-initialCards.forEach(function (card) {
-  console.log(card.name);
+const imagePreviewModal = document.querySelector("#image-preview-modal");
+const imagePreviewImage = imagePreviewModal.querySelector(".modal__image");
+const imagePreviewCaption = imagePreviewModal.querySelector(".modal__caption");
+const imagePreviewCloseButton = imagePreviewModal.querySelector(".modal__close-button");
+
+imagePreviewCloseButton.addEventListener("click", function () {
+  closeModal(imagePreviewModal);
 });
+
