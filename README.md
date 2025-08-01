@@ -1,50 +1,58 @@
-# Project: Spots
+# Spots
 
 ## Overview
 
-**Spots** is a responsive web project designed to display content cleanly across popular screen sizes.  
-This is a **cumulative project**, combining skills from earlier modules such as semantic HTML, Flexbox, Grid layout, responsive design, and modular CSS practices.
+**Spots** is a responsive, multi-section photo sharing app built with semantic HTML, BEM-based CSS, and vanilla JavaScript. It allows users to view a collection of photo cards, like or delete them, and open an image preview modal. This project showcases clean structure, interactive UI elements, and a mobile-first layout.
+
+This project was originally created during the TripleTen Software Engineering Program. It has since been updated with improved modal logic, cleaner DOM handling, and more scalable styling to reflect my growth as a developer.
 
 ---
 
-## Project Walkthrough Video
-
-[Watch the Presentation on Google Drive](https://drive.google.com/file/d/1Q5FiMj5MiSts-u2yZ4Yis5umPeFqnsTx/view?usp=sharing)
-
----
-
-## Technologies Used
-
-- HTML5 with semantic structure  
-- CSS3 with Flexbox and Media Queries  
-- Responsive design principles  
-- Figma for layout prototyping
-
----
-
-## Live Demo
+## 🔗 Live Demo
 
 [View on GitHub Pages](https://alexxavierruiz571.github.io/se_project_spots/)
 
 ---
 
-## Figma Design
+## 🎥 Walkthrough Video
 
-[View the Design on Figma](https://www.figma.com/design/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project--Spots?node-id=2-218&t=g0ymdBvPaXHeIC63-0)
-
----
-
-## Screenshots
-
-![Homepage Screenshot](./images/Screenshot%202025-07-04%20105802.png)  
-![Responsive View Screenshot](./images/Screenshot%202025-07-04%20105840.png)
+[Watch the Presentation](https://drive.google.com/file/d/1Q5FiMj5MiSts-u2yZ4Yis5umPeFqnsTx/view?usp=sharing)
 
 ---
 
-## Notes
+## 🛠️ Technologies Used
 
-This project is more complex than earlier ones. It reinforces layout structure, responsive behavior, and image handling techniques. A good step forward in building production-ready interfaces.
-I am currently learning how to implement JavaScript to add interactivity — including modal behavior, form handling, and dynamic card rendering. Future updates will reflect these enhancements as I continue progressing through the curriculum.
+- HTML5 (semantic markup)
+- CSS3 (Flexbox, Grid, BEM)
+- JavaScript (vanilla DOM manipulation)
+- Git & GitHub
+- Figma for prototyping
+
+---
+
+## 📦 Features
+
+- Fully responsive layout for mobile and desktop
+- Interactive image cards with:
+  - Like toggle
+  - Delete functionality
+  - Image preview modal
+- Modal logic refactored into reusable functions
+- Clean, modular codebase using the BEM methodology
+
+---
+
+## 🧠 Notes
+
+This project was built from scratch using vanilla JavaScript to reinforce core concepts like DOM manipulation, event handling, and modular code organization. The structure and setup were supported by AI tools for formatting guidance, but all logic and design decisions reflect my personal understanding and effort.
+
+---
+
+## 👨‍💻 Author
+
+Alex Xavier Ruiz  
+[LinkedIn](https://www.linkedin.com/in/alex-ruiz-291a29373) | [GitHub](https://github.com/AlexXavierRuiz571)
+
 
 ---
 
