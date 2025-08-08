@@ -99,6 +99,7 @@ const profileDescriptionElement = document.querySelector(
 editProfileButton.addEventListener("click", function () {
   editProfileNameInput.value = profileNameElement.textContent;
   editProfileDescriptionInput.value = profileDescriptionElement.textContent;
+  clearValidation(editProfileForm, validationSettings);
   openModal(editProfileModal);
 });
 
@@ -143,6 +144,7 @@ function handleAddCardSubmit(evt) {
 
   closeModal(newPostModal);
   evt.target.reset();
+  clearValidation(newPostForm, validationSettings);
 }
 
 newPostForm.addEventListener("submit", handleAddCardSubmit);
@@ -158,3 +160,15 @@ imagePreviewCloseButton.addEventListener("click", function () {
   closeModal(imagePreviewModal);
 });
 
+//------------ Enable Form Validation ------------
+
+const validationSettings = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__submit-button",
+  inactiveButtonClass: "modal__submit-button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__input-error_visible",
+};
+
+enableValidation(validationSettings);

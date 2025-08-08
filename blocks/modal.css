@@ -240,3 +240,34 @@
     max-width: unset;
   }
 }
+
+/* ------------ Validation Styles ------------ */
+
+.modal__input-error {
+  min-height: 16px;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #c53030;
+  visibility: hidden;
+}
+
+.modal__input-error_visible {
+  visibility: visible;
+}
+
+.modal__input_type_error {
+  border-color: #c53030;
+  outline: none;
+}
+
+.modal__submit-button_disabled,
+.modal__submit-button:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}
+
+.modal__submit-button_disabled:hover,
+.modal__submit-button:disabled:hover {
+  opacity: 0.5;
+}
