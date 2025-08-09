@@ -8,7 +8,6 @@ function openModal(modal) {
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
   document.removeEventListener("keydown", handleEscClose);
-
 }
 
 function handleEscClose(event) {
@@ -65,11 +64,11 @@ function getCardElement(cardData) {
   cardImage.src = cardData.link;
   cardImage.alt = cardData.name;
 
- likeButton.addEventListener("click", function () {
+  likeButton.addEventListener("click", function () {
     likeButton.classList.toggle("card__like-button_active");
   });
 
-deleteButton.addEventListener("click", function () {
+  deleteButton.addEventListener("click", function () {
     cardElement.remove();
   });
 
@@ -108,11 +107,34 @@ const profileDescriptionElement = document.querySelector(
   ".profile__description"
 );
 
+const editSaveBtn = editProfileModal.querySelector(".modal__submit-button");
+function setProfileSaveState() {
+  const isValid =
+    editProfileNameInput.validity.valid &&
+    editProfileDescriptionInput.validity.valid;
+
+  editSaveBtn.disabled = !isValid;
+  if (isValid) {
+    editSaveBtn.classList.remove("modal__submit-button_disabled");
+  } else {
+    editSaveBtn.classList.add("modal__submit-button_disabled");
+  }
+}
+
 editProfileButton.addEventListener("click", function () {
   editProfileNameInput.value = profileNameElement.textContent;
   editProfileDescriptionInput.value = profileDescriptionElement.textContent;
-  clearValidation(editProfileForm, validationSettings);
+
+  if (typeof clearValidation === "function") {
+    clearValidation(editProfileForm, validationSettings);
+  }
+  setProfileSaveState();
+
   openModal(editProfileModal);
+});
+
+editProfileForm.addEventListener("input", function () {
+  setProfileSaveState();
 });
 
 editProfileCloseButton.addEventListener("click", function () {
@@ -166,7 +188,9 @@ newPostForm.addEventListener("submit", handleAddCardSubmit);
 const imagePreviewModal = document.querySelector("#image-preview-modal");
 const imagePreviewImage = imagePreviewModal.querySelector(".modal__image");
 const imagePreviewCaption = imagePreviewModal.querySelector(".modal__caption");
-const imagePreviewCloseButton = imagePreviewModal.querySelector(".modal__close-button");
+const imagePreviewCloseButton = imagePreviewModal.querySelector(
+  ".modal__close-button"
+);
 
 imagePreviewCloseButton.addEventListener("click", function () {
   closeModal(imagePreviewModal);
