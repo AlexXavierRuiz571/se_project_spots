@@ -69,7 +69,7 @@
   height: 32px;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
-  font-style: medium;
+  font-style: normal;
   font-size: 32px;
   line-height: 100%;
 }
@@ -84,7 +84,7 @@
   padding: 0;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
-  font-style: medium;
+  font-style: normal;
   font-size: 16px;
   line-height: 110.00000000000001%;
   color: #212121b2;
@@ -102,7 +102,7 @@
   max-width: 100%;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
-  font-style: Medium;
+  font-style: normal;
   font-size: 20px;
   line-height: 100%;
   box-sizing: border-box;
@@ -125,7 +125,7 @@
   border: none;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
-  font-style: medium;
+  font-style: normal;
   font-size: 16px;
   line-height: 100%;
   color: #fcf5e5;
