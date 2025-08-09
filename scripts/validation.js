@@ -1,3 +1,12 @@
+const validationSettings = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__submit-button",
+  inactiveButtonClass: "modal__submit-button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__input-error_visible",
+};
+
 function updateErrorForInput(formElement, inputElement, settings) {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
 
@@ -61,5 +70,4 @@ function clearValidation(formElement, settings) {
   buttonElement.classList.toggle(settings.inactiveButtonClass, hasInvalid);
 }
 
-window.enableValidation = enableValidation;
-window.clearValidation = clearValidation;
+enableValidation(validationSettings);
