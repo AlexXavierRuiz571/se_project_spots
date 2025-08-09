@@ -37,6 +37,10 @@ This project was originally created during the TripleTen Software Engineering Pr
   - Like toggle
   - Delete functionality
   - Image preview modal
+- Modal closing via Esc key or clicking outside of modal
+- Form validation with configuration objects
+  - Real-time error messages for invalid inputs
+  - Submit button enables/disables based on validity
 - Modal logic refactored into reusable functions
 - Clean, modular codebase using the BEM methodology
 
