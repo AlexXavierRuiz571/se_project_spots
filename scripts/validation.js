@@ -7,21 +7,29 @@ const validationSettings = {
   errorClass: "modal__input-error_visible",
 };
 
-function updateErrorForInput(formElement, inputElement, settings) {
+function showInputError(formElement, inputElement, message, settings) {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+  inputElement.classList.add(settings.inputErrorClass);
+  if (errorElement) {
+    errorElement.textContent = message;
+    errorElement.classList.add(settings.errorClass);
+  }
+}
 
+function hideInputError(formElement, inputElement, settings) {
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+  inputElement.classList.remove(settings.inputErrorClass);
+  if (errorElement) {
+    errorElement.textContent = "";
+    errorElement.classList.remove(settings.errorClass);
+  }
+}
+
+function updateErrorForInput(formElement, inputElement, settings) {
   if (!inputElement.validity.valid) {
-    inputElement.classList.add(settings.inputErrorClass);
-    if (errorElement) {
-      errorElement.textContent = inputElement.validationMessage;
-      errorElement.classList.add(settings.errorClass);
-    }
+    showInputError(formElement, inputElement, inputElement.validationMessage, settings);
   } else {
-    inputElement.classList.remove(settings.inputErrorClass);
-    if (errorElement) {
-      errorElement.textContent = "";
-      errorElement.classList.remove(settings.errorClass);
-    }
+    hideInputError(formElement, inputElement, settings);
   }
 }
 
@@ -76,21 +84,5 @@ function clearValidation(formElement, settings) {
     button.classList.add(settings.inactiveButtonClass);
   }
 }
-
-newPostForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  closeModal(newPostModal);
-  newPostForm.reset();
-  clearValidation(newPostForm, validationSettings);
-});
-
-editProfileForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-
-  closeModal(editProfileModal);
-  editProfileForm.reset();
-  clearValidation(editProfileForm, validationSettings);
-});
-
 
 enableValidation(validationSettings);

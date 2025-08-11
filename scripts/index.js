@@ -146,6 +146,8 @@ function handleEditProfileSubmit(evt) {
   profileNameElement.textContent = editProfileNameInput.value;
   profileDescriptionElement.textContent = editProfileDescriptionInput.value;
   closeModal(editProfileModal);
+  editProfileForm.reset();
+  clearValidation(editProfileForm, validationSettings);
 }
 
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
@@ -175,9 +177,8 @@ function handleAddCardSubmit(evt) {
   };
   const card = getCardElement(cardData);
   cardsContainer.prepend(card);
-
   closeModal(newPostModal);
-  evt.target.reset();
+  newPostForm.reset();
   clearValidation(newPostForm, validationSettings);
 }
 
