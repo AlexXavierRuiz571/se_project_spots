@@ -1,3 +1,10 @@
+import "./index.css";
+import {
+  enableValidation,
+  clearValidation,
+  validationSettings,
+} from "../scripts/validation.js";
+
 //------------ Modal Functions ------------
 
 function openModal(modal) {
@@ -72,11 +79,14 @@ function getCardElement(cardData) {
     cardElement.remove();
   });
 
-  cardImage.addEventListener("click", function () {
-    imagePreviewCaption.textContent = cardData.name;
-    imagePreviewImage.src = cardData.link;
-    imagePreviewImage.alt = cardData.name;
-    openModal(imagePreviewModal);
+  cardImage.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("card__image")) {
+      evt.preventDefault();
+      imagePreviewCaption.textContent = cardData.name;
+      imagePreviewImage.src = cardData.link;
+      imagePreviewImage.alt = cardData.name;
+      openModal(imagePreviewModal);
+    }
   });
 
   return cardElement;
@@ -206,3 +216,7 @@ document.querySelectorAll(".modal").forEach((modal) => {
     }
   });
 });
+
+//------------ Validation Init ------------
+
+enableValidation(validationSettings);

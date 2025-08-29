@@ -1,4 +1,4 @@
-const validationSettings = {
+export const validationSettings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__submit-button",
@@ -57,7 +57,7 @@ function setFormValidation(formElement, settings) {
   });
 }
 
-function enableValidation(settings) {
+export function enableValidation(settings) {
   const formList = Array.from(document.querySelectorAll(settings.formSelector));
   formList.forEach((formElement) => {
     formElement.setAttribute("novalidate", "true");
@@ -65,7 +65,7 @@ function enableValidation(settings) {
   });
 }
 
-function clearValidation(formElement, settings) {
+export function clearValidation(formElement, settings) {
   const inputs = Array.from(formElement.querySelectorAll(settings.inputSelector));
   const button = formElement.querySelector(settings.submitButtonSelector);
 
@@ -84,5 +84,3 @@ function clearValidation(formElement, settings) {
     button.classList.add(settings.inactiveButtonClass);
   }
 }
-
-enableValidation(validationSettings);
