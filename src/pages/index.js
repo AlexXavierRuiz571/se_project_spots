@@ -4,7 +4,7 @@ import {
   clearValidation,
   validationSettings,
 } from "../scripts/validation.js";
-import Api from "../"
+import Api from "../utils/Api.js";
 
 
 //------------ Modal Functions ------------
@@ -57,6 +57,14 @@ const initialCards = [
   },
 ];
 
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "8ed5d8d5-a092-4bf5-8436-67def8891fb7",
+    "Content-Type": "application/json",
+  },
+});
+
 //------------ Card Creation and Display ------------
 
 const cardTemplate = document.querySelector("#card-template").content;
@@ -94,10 +102,16 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-initialCards.forEach(function (cardData) {
-  const card = getCardElement(cardData);
-  cardsContainer.prepend(card);
-});
+api.getInitialCards()
+  .then((cards) => {
+    cards.forEach((cardData) => {
+      const card = getCardElement(cardData);
+      cardsContainer.append(card);
+    });
+  })
+  .catch((error) => {
+    console.error("Error fetching cards:", error);
+  });
 
 //------------ Edit Profile Modal ------------
 
