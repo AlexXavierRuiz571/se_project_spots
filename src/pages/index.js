@@ -53,8 +53,31 @@ function getCardElement(cardData) {
   cardImage.src = cardData.link;
   cardImage.alt = cardData.name;
 
-  likeButton.addEventListener("click", function () {
-    likeButton.classList.toggle("card__like-button_active");
+  if (cardData.isLiked) {
+    likeButton.classList.add("card__like-button_active");
+  }
+
+  likeButton.addEventListener("click", () => {
+    const isActive = likeButton.classList.contains("card__like-button_active");
+
+    let request;
+    if (isActive) {
+      request = api.removeLike(cardData._id);
+    } else {
+      request = api.addLike(cardData._id);
+    }
+
+    request
+      .then((updatedCard) => {
+        if (updatedCard.isLiked) {
+          likeButton.classList.add("card__like-button_active");
+        } else {
+          likeButton.classList.remove("card__like-button_active");
+        }
+      })
+      .catch((error) => {
+        console.error("Like toggle failed:", error);
+      });
   });
 
   deleteButton.addEventListener("click", () =>
@@ -116,13 +139,13 @@ const profileDescriptionElement = document.querySelector(
   ".profile__description"
 );
 
-const editSaveBtn = editProfileModal.querySelector(".modal__submit-button");
+const editSaveButton = editProfileModal.querySelector(".modal__submit-button");
 function setProfileSaveState() {
   const isValid =
     editProfileNameInput.validity.valid &&
     editProfileDescriptionInput.validity.valid;
 
-  editSaveBtn.disabled = !isValid;
+  editSaveButton.disabled = !isValid;
   if (isValid) {
     editSaveBtn.classList.remove("modal__submit-button_disabled");
   } else {
@@ -260,14 +283,15 @@ deleteCardForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   if (!selectedCard || !selectedCardId) return;
 
-api.removeCard(selectedCardId)
-  .then(() => {
-    selectedCard.remove();
-    selectedCard = null;
-    selectedCardId = null;
-    closeModal(deleteCardModal);
-  })
-  .catch((error) => console.error("Delete failed.", error));
+  api
+    .removeCard(selectedCardId)
+    .then(() => {
+      selectedCard.remove();
+      selectedCard = null;
+      selectedCardId = null;
+      closeModal(deleteCardModal);
+    })
+    .catch((error) => console.error("Delete failed.", error));
 });
 
 //------------ Modal Close ------------
