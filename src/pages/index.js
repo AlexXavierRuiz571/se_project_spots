@@ -152,13 +152,22 @@ editProfileCloseButton.addEventListener("click", function () {
 
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
-  profileNameElement.textContent = editProfileNameInput.value;
-  profileDescriptionElement.textContent = editProfileDescriptionInput.value;
-  closeModal(editProfileModal);
-  editProfileForm.reset();
-  clearValidation(editProfileForm, validationSettings);
-}
 
+  api.editUserInfo({
+    name: editProfileNameInput.value,
+    about: editProfileDescriptionInput.value,
+  })
+  .then((updatedUser) => {
+    profileName.textContent = updatedUser.name;
+    profileAbout.textContent = updatedUser.about;
+    closeModal(editProfileModal);
+    editProfileForm.reset();
+    clearValidation(editProfileForm, validationSettings);
+  })
+  .catch((error) => {
+    console.error("Failed to update profile:", error);
+  });
+}
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 
 //------------ New Post Modal ------------
