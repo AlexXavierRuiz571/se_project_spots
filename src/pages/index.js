@@ -57,9 +57,11 @@ function getCardElement(cardData) {
     likeButton.classList.toggle("card__like-button_active");
   });
 
-  deleteButton.addEventListener("click", function () {
-    cardElement.remove();
-  });
+  deleteButton.addEventListener("click", () => {
+  cardToDelete = cardElement;
+  openModal(deleteCardModal);
+});
+
 
   cardImage.addEventListener("click", (evt) => {
     if (evt.target.classList.contains("card__image")) {
@@ -160,7 +162,7 @@ function handleEditProfileSubmit(evt) {
   .then((updatedUser) => {
     profileName.textContent = updatedUser.name;
     profileAbout.textContent = updatedUser.about;
-    
+
     closeModal(editProfileModal);
     editProfileForm.reset();
     clearValidation(editProfileForm, validationSettings);
@@ -220,6 +222,34 @@ const imagePreviewCloseButton = imagePreviewModal.querySelector(
 
 imagePreviewCloseButton.addEventListener("click", function () {
   closeModal(imagePreviewModal);
+});
+
+//------------ Delete Card Modal ------------
+
+const deleteCardModal = document.querySelector("#delete-card-modal");
+const deleteCardForm = deleteCardModal.querySelector(".modal__form");
+const deleteCardCancelButton = deleteCardModal.querySelector("#delete-card-cancel");
+const deleteCardCloseButton = deleteCardModal.querySelector(".modal__close-button");
+
+let cardToDelete = null;
+
+deleteCardCancelButton.addEventListener("click", () => {
+  cardToDelete = null;
+  closeModal(deleteCardModal);
+});
+
+deleteCardCloseButton.addEventListener("click", () => {
+  cardToDelete = null;
+  closeModal(deleteCardModal);
+});
+
+deleteCardForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (cardToDelete) {
+    cardToDelete.remove();
+    cardToDelete = null;
+  }
+  closeModal(deleteCardModal);
 });
 
 //------------ Modal Close ------------

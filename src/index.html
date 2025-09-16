@@ -172,5 +172,23 @@
         </form>
       </div>
     </div>
+    <div class="modal modal_is-opened" id="delete-card-modal">
+      <div class="modal__container">
+        <button type="button" class="modal__close-button"></button>
+        <h2 class="modal__title">
+          Are you sure you want to delete this image?
+        </h2>
+        <form class="modal__form" name="delete-card-form" novalidate>
+          <button type="submit" class="modal__submit-button">Delete</button>
+          <button
+            type="button"
+            class="modal__submit-button"
+            id="delete-card-cancel"
+          >
+            Cancel
+          </button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
