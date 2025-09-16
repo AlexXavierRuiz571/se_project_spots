@@ -160,6 +160,7 @@ function handleEditProfileSubmit(evt) {
   .then((updatedUser) => {
     profileName.textContent = updatedUser.name;
     profileAbout.textContent = updatedUser.about;
+    
     closeModal(editProfileModal);
     editProfileForm.reset();
     clearValidation(editProfileForm, validationSettings);
@@ -189,15 +190,21 @@ newPostCloseButton.addEventListener("click", function () {
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-  const cardData = {
+
+  api.addCard({
     name: captionInput.value,
     link: imageLinkInput.value,
-  };
-  const card = getCardElement(cardData);
-  cardsContainer.prepend(card);
-  closeModal(newPostModal);
-  newPostForm.reset();
-  clearValidation(newPostForm, validationSettings);
+  })
+    .then((newCard) => {
+      const card = getCardElement(newCard);
+      cardsContainer.prepend(card);
+      closeModal(newPostModal);
+      newPostForm.reset();
+      clearValidation(newPostForm, validationSettings);
+    })
+    .catch((error) => {
+      console.error("Failed to add new card:", error);
+    });
 }
 
 newPostForm.addEventListener("submit", handleAddCardSubmit);
