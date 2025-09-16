@@ -243,8 +243,8 @@ deleteCardCloseButton.addEventListener("click", () => {
   closeModal(deleteCardModal);
 });
 
-deleteCardForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+deleteCardForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
   if (cardToDelete) {
     cardToDelete.remove();
     cardToDelete = null;

@@ -168,6 +168,55 @@
   border-radius: 8px;
 }
 
+#delete-card-modal .modal__title {
+  width: auto;
+  height: auto;
+  font-size: 24px;
+  text-align: center;
+  margin: 0 0 32px;
+}
+
+#delete-card-modal .modal__form {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+#delete-card-modal .modal__submit-button {
+  background: #FF6565;
+  color: #212121;
+  border: none;
+}
+
+#delete-card-modal .modal__submit-button-cancel {
+  background: transparent;
+  color: #212121;
+  border: 1px solid #212121;
+}
+
+#delete-card-modal .modal__submit-button:hover {
+  background: #FF3333;
+  color: #212121;
+  opacity: 1;
+  cursor: pointer;
+}
+
+#delete-card-modal .modal__submit-button-cancel:hover {
+  background: #212121;
+  color: #fff;
+  border-color: #212121;
+  opacity: 1;
+  cursor: pointer;
+}
+
+#delete-card-modal .modal__close-button {
+top: -1px;
+right: -50px;
+background-image: url(../images/white-close-icon.svg);
+opacity: 1;
+}
+
 @media screen and (max-width: 630px) {
   .modal__container {
     border-radius: 8px;
