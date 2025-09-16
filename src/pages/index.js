@@ -6,7 +6,6 @@ import {
 } from "../scripts/validation.js";
 import Api from "../utils/Api.js";
 
-
 //------------ Modal Functions ------------
 
 function openModal(modal) {
@@ -102,16 +101,27 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-api.getInitialCards()
-  .then((cards) => {
+//------------ Profile Elements ------------
+
+const profileName = document.querySelector(".profile__name");
+const profileAbout = document.querySelector(".profile__description");
+const profileAvatar = document.querySelector(".profile__avatar");
+
+api.getInitialData()
+  .then(([user, cards]) => {
+    profileName.textContent = user.name;
+    profileAbout.textContent = user.about;
+    profileAvatar.src = user.avatar;
+
     cards.forEach((cardData) => {
       const card = getCardElement(cardData);
       cardsContainer.append(card);
     });
   })
   .catch((error) => {
-    console.error("Error fetching cards:", error);
+    console.error("Initial load failed:", error);
   });
+
 
 //------------ Edit Profile Modal ------------
 
