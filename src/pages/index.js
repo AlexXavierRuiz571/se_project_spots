@@ -57,11 +57,9 @@ function getCardElement(cardData) {
     likeButton.classList.toggle("card__like-button_active");
   });
 
-  deleteButton.addEventListener("click", () => {
-  cardToDelete = cardElement;
-  openModal(deleteCardModal);
-});
-
+  deleteButton.addEventListener("click", () =>
+    handleDeleteCard(cardElement, cardData)
+  );
 
   cardImage.addEventListener("click", (evt) => {
     if (evt.target.classList.contains("card__image")) {
@@ -82,7 +80,8 @@ const profileName = document.querySelector(".profile__name");
 const profileAbout = document.querySelector(".profile__description");
 const profileAvatar = document.querySelector(".profile__avatar");
 
-api.getInitialData()
+api
+  .getInitialData()
   .then(([user, cards]) => {
     profileName.textContent = user.name;
     profileAbout.textContent = user.about;
@@ -96,7 +95,6 @@ api.getInitialData()
   .catch((error) => {
     console.error("Initial load failed:", error);
   });
-
 
 //------------ Edit Profile Modal ------------
 
@@ -155,21 +153,22 @@ editProfileCloseButton.addEventListener("click", function () {
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
 
-  api.editUserInfo({
-    name: editProfileNameInput.value,
-    about: editProfileDescriptionInput.value,
-  })
-  .then((updatedUser) => {
-    profileName.textContent = updatedUser.name;
-    profileAbout.textContent = updatedUser.about;
+  api
+    .editUserInfo({
+      name: editProfileNameInput.value,
+      about: editProfileDescriptionInput.value,
+    })
+    .then((updatedUser) => {
+      profileName.textContent = updatedUser.name;
+      profileAbout.textContent = updatedUser.about;
 
-    closeModal(editProfileModal);
-    editProfileForm.reset();
-    clearValidation(editProfileForm, validationSettings);
-  })
-  .catch((error) => {
-    console.error("Failed to update profile:", error);
-  });
+      closeModal(editProfileModal);
+      editProfileForm.reset();
+      clearValidation(editProfileForm, validationSettings);
+    })
+    .catch((error) => {
+      console.error("Failed to update profile:", error);
+    });
 }
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 
@@ -193,10 +192,11 @@ newPostCloseButton.addEventListener("click", function () {
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
 
-  api.addCard({
-    name: captionInput.value,
-    link: imageLinkInput.value,
-  })
+  api
+    .addCard({
+      name: captionInput.value,
+      link: imageLinkInput.value,
+    })
     .then((newCard) => {
       const card = getCardElement(newCard);
       cardsContainer.prepend(card);
@@ -228,28 +228,46 @@ imagePreviewCloseButton.addEventListener("click", function () {
 
 const deleteCardModal = document.querySelector("#delete-card-modal");
 const deleteCardForm = deleteCardModal.querySelector(".modal__form");
-const deleteCardCancelButton = deleteCardModal.querySelector("#delete-card-cancel");
-const deleteCardCloseButton = deleteCardModal.querySelector(".modal__close-button");
+const deleteCardCancelButton = deleteCardModal.querySelector(
+  "#delete-card-cancel"
+);
+const deleteCardCloseButton = deleteCardModal.querySelector(
+  ".modal__close-button"
+);
 
-let cardToDelete = null;
+let selectedCard = null;
+let selectedCardId = null;
+
+function handleDeleteCard(cardElement, cardData) {
+  selectedCard = cardElement;
+  selectedCardId = cardData._id;
+  openModal(deleteCardModal);
+}
 
 deleteCardCancelButton.addEventListener("click", () => {
-  cardToDelete = null;
+  selectedCard = null;
+  selectedCardId = null;
   closeModal(deleteCardModal);
 });
 
 deleteCardCloseButton.addEventListener("click", () => {
-  cardToDelete = null;
+  selectedCard = null;
+  selectedCardId = null;
   closeModal(deleteCardModal);
 });
 
 deleteCardForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
-  if (cardToDelete) {
-    cardToDelete.remove();
-    cardToDelete = null;
-  }
-  closeModal(deleteCardModal);
+  if (!selectedCard || !selectedCardId) return;
+
+api.removeCard(selectedCardId)
+  .then(() => {
+    selectedCard.remove();
+    selectedCard = null;
+    selectedCardId = null;
+    closeModal(deleteCardModal);
+  })
+  .catch((error) => console.error("Delete failed.", error));
 });
 
 //------------ Modal Close ------------
