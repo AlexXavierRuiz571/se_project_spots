@@ -39,11 +39,25 @@
 
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%= require('./images/avatar.jpg') %>"
-            alt="Current Avatar"
-            class="profile__avatar"
-          />
+          <div class="profile__avatar-wrapper">
+            <img
+              src="<%= require('./images/avatar.jpg') %>"
+              alt="Current Avatar"
+              class="profile__avatar"
+            />
+            <button
+              type="button"
+              class="profile__avatar-edit"
+              aria-label="Edit avatar"
+            >
+              <img
+                src="<%= require('./images/white-pencil-icon.svg') %>"
+                alt=""
+              />
+              Edit Avatar
+            </button>
+          </div>
+
           <div class="profile__column">
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviation</p>
@@ -187,6 +201,29 @@
           >
             Cancel
           </button>
+        </form>
+      </div>
+    </div>
+    <div class="modal" id="edit-avatar-modal">
+      <div class="modal__container">
+        <button type="button" class="modal__close-button"></button>
+        <h2 class="modal__title">Edit profile avatar</h2>
+        <form class="modal__form" name="edit-avatar-form" novalidate>
+          <label for="avatar-link-input" class="modal__label">
+            Profile Picture
+            <input
+              id="avatar-link-input"
+              name="avatar"
+              type="url"
+              class="modal__input"
+              placeholder="Paste a link to an image"
+              required
+            />
+            <span class="modal__input-error" id="avatar-link-input-error">
+              Please enter a URL.
+            </span>
+          </label>
+          <button type="submit" class="modal__submit-button">Save</button>
         </form>
       </div>
     </div>

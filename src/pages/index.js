@@ -176,6 +176,10 @@ editProfileCloseButton.addEventListener("click", function () {
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
 
+  const previousButtonText = editSaveButton.textContent;
+  editSaveButton.textContent = "Saving...";
+  editSaveButton.disabled = true;
+
   api
     .editUserInfo({
       name: editProfileNameInput.value,
@@ -191,9 +195,79 @@ function handleEditProfileSubmit(evt) {
     })
     .catch((error) => {
       console.error("Failed to update profile:", error);
+    })
+    .finally(() => {
+      editSaveButton.textContent = previousButtonText;
+      setProfileSaveState();
     });
 }
+
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
+
+//------------ Edit Avatar Modal ------------
+
+const editAvatarButton = document.querySelector(".profile__avatar-edit");
+const editAvatarModal = document.querySelector("#edit-avatar-modal");
+const editAvatarCloseButton = editAvatarModal.querySelector(
+  ".modal__close-button"
+);
+const editAvatarForm = editAvatarModal.querySelector(".modal__form");
+const avatarLinkInput = editAvatarModal.querySelector("#avatar-link-input");
+const avatarSaveButton = editAvatarModal.querySelector(".modal__submit-button");
+
+function setAvatarSaveState() {
+  const isValid = avatarLinkInput.validity.valid;
+  avatarSaveButton.disabled = !isValid;
+  if (isValid) {
+    avatarSaveButton.classList.remove("modal__submit-button_disabled");
+  } else {
+    avatarSaveButton.classList.add("modal__submit-button_disabled");
+  }
+}
+
+editAvatarButton.addEventListener("click", function () {
+  if (typeof clearValidation === "function") {
+    clearValidation(editAvatarForm, validationSettings);
+  }
+  setAvatarSaveState();
+  openModal(editAvatarModal);
+});
+
+editAvatarForm.addEventListener("input", function () {
+  setAvatarSaveState();
+});
+
+editAvatarCloseButton.addEventListener("click", function () {
+  closeModal(editAvatarModal);
+});
+
+function handleEditAvatarSubmit(evt) {
+  evt.preventDefault();
+
+  avatarSaveButton.disabled = true;
+  const previousText = avatarSaveButton.textContent;
+  avatarSaveButton.textContent = "Saving...";
+
+  api
+    .updateAvatar({ avatar: avatarLinkInput.value })
+    .then((user) => {
+      profileAvatar.src = user.avatar;
+      closeModal(editAvatarModal);
+      editAvatarForm.reset();
+      if (typeof clearValidation === "function") {
+        clearValidation(editAvatarForm, validationSettings);
+      }
+    })
+    .catch((error) => {
+      console.error("Failed to update avatar:", error);
+    })
+    .finally(() => {
+      avatarSaveButton.textContent = previousText;
+      setAvatarSaveState();
+    });
+}
+
+editAvatarForm.addEventListener("submit", handleEditAvatarSubmit);
 
 //------------ New Post Modal ------------
 
@@ -203,6 +277,7 @@ const newPostCloseButton = newPostModal.querySelector(".modal__close-button");
 const newPostForm = newPostModal.querySelector(".modal__form");
 const imageLinkInput = newPostModal.querySelector("#image-input");
 const captionInput = newPostModal.querySelector("#caption-input");
+const newPostSaveButton = newPostModal.querySelector(".modal__submit-button");
 
 newPostButton.addEventListener("click", function () {
   openModal(newPostModal);
@@ -214,6 +289,10 @@ newPostCloseButton.addEventListener("click", function () {
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
+
+  const previousButtonText = newPostSaveButton.textContent;
+  newPostSaveButton.textContent = "Saving...";
+  newPostSaveButton.disabled = true;
 
   api
     .addCard({
@@ -229,6 +308,10 @@ function handleAddCardSubmit(evt) {
     })
     .catch((error) => {
       console.error("Failed to add new card:", error);
+    })
+    .finally(() => {
+      newPostSaveButton.textContent = previousButtonText;
+      newPostSaveButton.disabled = false;
     });
 }
 
@@ -283,6 +366,15 @@ deleteCardForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   if (!selectedCard || !selectedCardId) return;
 
+  const deleteConfirmButton = deleteCardForm.querySelector(
+    ".modal__submit-button"
+  );
+  const previousButtonText = deleteConfirmButton.textContent;
+
+  deleteConfirmButton.textContent = "Deleting...";
+  deleteConfirmButton.disabled = true;
+  deleteCardCancelButton.disabled = true;
+
   api
     .removeCard(selectedCardId)
     .then(() => {
@@ -291,7 +383,12 @@ deleteCardForm.addEventListener("submit", (evt) => {
       selectedCardId = null;
       closeModal(deleteCardModal);
     })
-    .catch((error) => console.error("Delete failed.", error));
+    .catch((error) => console.error("Delete failed.", error))
+    .finally(() => {
+      deleteConfirmButton.textContent = previousButtonText;
+      deleteConfirmButton.disabled = false;
+      deleteCardCancelButton.disabled = false;
+    });
 });
 
 //------------ Modal Close ------------

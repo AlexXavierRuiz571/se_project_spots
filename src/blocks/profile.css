@@ -4,12 +4,53 @@
   border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
 }
 
-.profile__avatar {
-  margin-right: 20px;
+.profile__avatar-wrapper {
+  position: relative;
   width: 190px;
   height: 190px;
   border-radius: 8px;
+  overflow: hidden;
+  margin-right: 20px;
+}
+
+.profile__avatar {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  margin: 0;
+}
+
+.profile__avatar-edit {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 12px;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  border: none;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: medium;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.profile__avatar-wrapper:hover .profile__avatar-edit {
+  opacity: 1;
+  visibility: visible;
 }
 
 .profile__column {
@@ -101,33 +142,63 @@
     padding-top: 20px;
   }
 
-  .profile__avatar {
+  .profile__avatar-wrapper {
     width: 80px;
     height: 80px;
     margin: 0 0 12px;
+    position: relative;
   }
 
-.profile__name {
-  font-size: 20px;
-  margin: 0 0 6px;
-  max-width: 288px;
-}
+  .profile__name {
+    font-size: 20px;
+    margin: 0 0 6px;
+    max-width: 288px;
+  }
 
-.profile__description {
-  margin-bottom: 32px;
-  max-width: 288px;
-}
+  .profile__description {
+    margin-bottom: 32px;
+    max-width: 288px;
+  }
 
-.profile__column {
-  margin-bottom: 20px;
-}
+  .profile__column {
+    margin-bottom: 20px;
+  }
 
-.profile__edit-button {
-  justify-content: center;
-}
+  .profile__edit-button {
+    justify-content: center;
+  }
 
   .profile__post-button {
     margin: 0;
     width: 288px;
   }
+
+  .profile__avatar-edit {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    width: 24px;
+    height: 24px;
+    border-radius: 8px;
+    background-color: rgba(33, 33, 33, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    gap: 0;
+    line-height: 0;
+    bottom: 4px;
+    right: 4px;
+    top: auto;
+    left: auto;
+    font-size: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+.profile__avatar-edit > img {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
 }
