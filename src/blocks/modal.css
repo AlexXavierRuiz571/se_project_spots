@@ -217,6 +217,10 @@ background-image: url(../images/white-close-icon.svg);
 opacity: 1;
 }
 
+#delete-card-modal .modal__close-button:hover {
+opacity: 0.5;
+}
+
 @media screen and (max-width: 630px) {
   .modal__container {
     border-radius: 8px;

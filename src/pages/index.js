@@ -32,7 +32,7 @@ function handleEscClose(event) {
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
-    authorization: "8ed5d8d5-a092-4bf5-8436-67def8891fb7",
+    authorization: "aa20a9d0-0d46-4f93-a16f-d7cb4e5c9df1",
     "Content-Type": "application/json",
   },
 });
@@ -147,9 +147,9 @@ function setProfileSaveState() {
 
   editSaveButton.disabled = !isValid;
   if (isValid) {
-    editSaveBtn.classList.remove("modal__submit-button_disabled");
+    editSaveButton.classList.remove("modal__submit-button_disabled");
   } else {
-    editSaveBtn.classList.add("modal__submit-button_disabled");
+    editSaveButton.classList.add("modal__submit-button_disabled");
   }
 }
 
