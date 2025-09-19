@@ -32,7 +32,7 @@ function handleEscClose(event) {
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
-    authorization: "aa20a9d0-0d46-4f93-a16f-d7cb4e5c9df1",
+    authorization: "843f40a5-12a3-4369-bf8e-4a4f6e53cc51",
     "Content-Type": "application/json",
   },
 });
