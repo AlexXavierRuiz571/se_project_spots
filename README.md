@@ -16,7 +16,7 @@ This project was originally created during the TripleTen Software Engineering Pr
 
 ## 🎥 Walkthrough Video
 
-[Watch the Presentation](https://drive.google.com/file/d/1Q5FiMj5MiSts-u2yZ4Yis5umPeFqnsTx/view?usp=sharing)
+[Watch the Presentation](https://drive.google.com/file/d/17_wePHT_uP1B7cztpFFUXrApzWYDfyw6/view?usp=drive_link)
 
 ---
 

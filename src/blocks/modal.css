@@ -168,6 +168,105 @@
   border-radius: 8px;
 }
 
+#delete-card-modal .modal__title {
+  width: auto;
+  height: auto;
+  font-size: 24px;
+  text-align: center;
+  margin: 0 0 32px;
+}
+
+#delete-card-modal .modal__form {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+#delete-card-modal .modal__submit-button {
+  background: #ff6565;
+  color: #212121;
+  border: none;
+}
+
+#delete-card-modal .modal__submit-button-cancel {
+  background: transparent;
+  color: #212121;
+  border: 1px solid #212121;
+}
+
+#delete-card-modal .modal__submit-button:hover {
+  background: #ff3333;
+  color: #212121;
+  opacity: 1;
+  cursor: pointer;
+}
+
+#delete-card-modal .modal__submit-button-cancel:hover {
+  background: #212121;
+  color: #fff;
+  border-color: #212121;
+  opacity: 1;
+  cursor: pointer;
+}
+
+#delete-card-modal .modal__close-button {
+  top: -1px;
+  right: -50px;
+  background-image: url(../images/white-close-icon.svg);
+  opacity: 1;
+}
+
+#delete-card-modal .modal__close-button:hover {
+  opacity: 0.5;
+}
+
+#edit-avatar-modal .modal__title {
+  width: auto;
+  height: auto;
+  font-size: 32px;
+  margin: 0 0 36px;
+}
+
+#edit-avatar-modal .modal__form {
+  display: flex;
+  flex-direction: column;
+}
+
+#edit-avatar-modal .modal__label {
+  font-size: 16px;
+  color: #212121;
+  opacity: 0.7;
+}
+
+#edit-avatar-modal .modal__input {
+  width: 100%;
+  height: 46px;
+  border: 1px solid rgba(33, 33, 33, 0.3);
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+#edit-avatar-modal .modal__input-error {
+  font-size: 12px;
+  color: red;
+}
+
+#edit-avatar-modal .modal__submit-button {
+  height: 46px;
+  border-radius: 8px;
+  background: #212121;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+#edit-avatar-modal .modal__submit-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
 @media screen and (max-width: 630px) {
   .modal__container {
     border-radius: 8px;
@@ -210,6 +309,18 @@
     line-height: 100%;
   }
 
+  #edit-avatar-modal .modal__title {
+    font-size: 20px;
+    line-height: 120%;
+    margin-bottom: 20px;
+  }
+
+  #edit-avatar-modal .modal__label {
+    font-size: 16px;
+    line-height: 110%;
+    margin-bottom: 8px;
+  }
+
   .modal__label {
     margin-bottom: 24px;
     font-family: "Poppins", Arial, Helvetica, sans-serif;
@@ -235,7 +346,34 @@
     margin-top: 8px;
     margin-bottom: 0;
   }
+
+ #delete-card-modal .modal__container {
+    max-width: 320px;
+    padding: 20px;
+  }
+
+  #delete-card-modal .modal__form {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #delete-card-modal .modal__submit-button,
+  #delete-card-modal .modal__submit-button-cancel {
+    width: auto;
+    min-width: 120px;
+    height: 48px;
+  }
+
+  #delete-card-modal .modal__close-button {
+    top: 12px;
+    right: 12px;
+    background-image: url(../images/white-close-icon.svg);
+    opacity: 0.4;
+  }
+
 }
+
 
 @media screen and (max-width: 800px) {
   .modal__close-button_type_preview {
@@ -245,6 +383,14 @@
 
   .modal__image {
     max-width: unset;
+  }
+
+ #delete-card-modal .modal__close-button {
+   position: absolute;
+    top: -48px;
+    right: 0;
+    display: block;
+    background-image: url(../images/white-close-icon.svg);
   }
 }
 
